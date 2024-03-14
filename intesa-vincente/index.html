@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>By Drake</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar hidden" id="navbar">
+        <a href="../index.html"><button class="navbarBtn">Home</button></a>
+        <a href="../index.html"><button class="navbarBtn">Home</button></a>
+        <a href="../index.html"><button class="navbarBtn">Home</button></a>
+    </div>
+    
+    <div class="main">
+        <div class="top container">
+            <div class="timer backgroundDiv disableSelection" id="timerDiv">
+                <span id="timerText">:60</span>
+            </div>
+    
+            <div class="word backgroundDiv">
+                <span id="wordText">INTESA VINCENTE</span>
+            </div>
+
+            <div class="score backgroundDiv disableSelection">
+                <span id="scoreText">0</span>
+            </div>
+        </div>
+
+        <div class="bottom container">
+            <div class="minusPunti backgroundDiv disableSelection" id="minusPunti">
+                <span>-1</span>
+            </div>
+
+            <div class="passo backgroundDiv disableSelection" id="passo">
+                <span id="passoText">3</span>
+            </div>
+
+            <div class="plusPunti backgroundDiv disableSelection" id="plusPunti">
+                <span>+1</span>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <p class="disableSelection">
+                CONTROLLI:<br>
+                SPAZIO = FAI PARTIRE O METTI IN PAUSA<br>
+                SU/GIU = GESTISCI PASSO<br>
+                DESTRA/SINISTRA = GESTISCI PUNTI<br>
+                CLICK SUL TIMER = CAMBIA 60s/120s<br>
+                F5 = RESET TUTTO (PUNTI, TIMER, PASSO)<br>
+                BACKSPACE = NASCONDI/MOSTRA NAVBAR E FOOTER
+            </p>
+        </div>
+    </div>
+    
+    <div class="footer hidden" id="footer">
+        <p>Made by <a href="https://discord.gg/3cWrnPNU"><b>Drake</b></a> with ❤️</p>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
