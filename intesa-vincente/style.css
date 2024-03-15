@@ -79,7 +79,7 @@ body {
 .timer {
     width: 10%;
     background: linear-gradient(0deg, rgb(18, 0, 135) 0%, rgb(26, 0, 194) 100%);
-    font-size: 35px;
+    font-size: clamp(30px, 2vw, 35px);
 }
 
 .timer:hover {
@@ -88,7 +88,7 @@ body {
 
 .word {
     background: linear-gradient(0deg, rgb(0, 135, 0) 0%, rgb(0, 194, 0) 100%);
-    font-size: 30px;
+    font-size: clamp(30px, 2vw, 35px);
     width: 80%;
     vertical-align: middle;
 }
@@ -96,7 +96,20 @@ body {
 .score {
     width: 10%;
     background: linear-gradient(0deg, rgb(208, 69, 0) 0%, rgb(255, 85, 0) 100%);
-    font-size: 35px;
+    font-size: clamp(30px, 2vw, 35px);
+}
+
+@media screen and (max-width: 600px) {
+    .word {
+        width: 80%;
+        height: fit-content;
+        font-size: clamp(30px, 2vw, 35px);
+    }
+    .timer, .score {
+        width: 10%;
+        height: fit-content;
+        font-size: clamp(30px, 2vw, 35px);
+    }
 }
 
 .bottom {
@@ -117,20 +130,20 @@ body {
 .minusPunti {
     width: 10%;
     background: linear-gradient(0deg, rgb(48, 47, 57) 0%, rgb(94, 91, 113) 100%);
-    font-size: 25px;
+    font-size: clamp(20px, 2vw, 25px);
     padding: 10px 0 10px 0;
 }
 
 .passo {
     width: 10%;
     background: linear-gradient(0deg, rgb(64, 0, 98) 0%, rgb(129, 0, 199) 100%);
-    font-size: 28px;
+    font-size: clamp(20px, 2vw, 28px);
 }
 
 .plusPunti {
     width: 10%;
     background: linear-gradient(0deg, rgb(48, 47, 57) 0%, rgb(94, 91, 113) 100%);
-    font-size: 25px;
+    font-size: clamp(20px, 2vw, 25px);
     padding: 10px 0 10px 0;
 }
 
@@ -146,13 +159,10 @@ body {
 }
 
 .footer {
-    width: 100%;
+    width: fit-content;
     height: fit-content;
     left: 0;
     bottom: 0;
-    padding: 5px 20px 5px 20px;
     position: fixed;
-    background: whitesmoke;
-    color: black;
-    text-align: center;
+    padding: 20px;
 }

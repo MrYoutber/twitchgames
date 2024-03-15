@@ -41,9 +41,8 @@ function changeTimer() {
     timerText.textContent = ":" + timerCountdown;
 }
 
-function toggleNavbarAndFooter() {
+function toggleNavbar() {
     navbar.classList.toggle('hidden');
-    footer.classList.toggle('hidden');
 }
 
 function generateWord() {
@@ -125,6 +124,6 @@ timerDiv.addEventListener('click', function() {
 // NAVBAR AND FOOTER
 document.addEventListener('keyup', function(event) {
     if (event.key === 'Backspace') {
-        toggleNavbarAndFooter();
+        toggleNavbar();
     }
 });
