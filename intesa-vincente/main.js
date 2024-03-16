@@ -10,6 +10,7 @@ let footer = document.getElementById('footer');
 
 let scoreText = document.getElementById('scoreText');
 let wordText = document.getElementById('wordText');
+let wordDiv = document.getElementById('wordDiv');
 
 let minusPunti = document.getElementById('minusPunti');
 let passo = document.getElementById('passo');
@@ -45,13 +46,34 @@ function toggleNavbar() {
     navbar.classList.toggle('hidden');
 }
 
+function rollLetters(length) {
+    return new Promise((resolve) => {
+        let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        let intervalId = setInterval(() => {
+            let randomString = '';
+            for (let i = 0; i < length; i++) {
+                randomString += letters.charAt(Math.floor(Math.random() * letters.length));
+            }
+            wordText.textContent = randomString;
+        }, 50);
+
+        setTimeout(() => {
+            clearInterval(intervalId);
+            resolve();
+        }, 1000);
+    });
+}
+
 function generateWord() {
     fetch('parole.txt')
         .then(response => response.text())
         .then(data => {
             let words = data.split('\n');
-            let randomWord = words[Math.floor(Math.random() * words.length)];
-            wordText.textContent = randomWord;
+            let randomWord = words[Math.floor(Math.random() * words.length)].toUpperCase();
+            let length = randomWord.length;
+            rollLetters(length).then(() => {
+                wordText.textContent = randomWord;
+            });
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -74,6 +96,21 @@ document.addEventListener('keyup', function(event) {
             } else {
                 stopTimer();
             }
+        }
+    }
+});
+
+// MOBILE WORD GENERATION
+wordDiv.addEventListener('click', function() {
+    if (timerCountdown === 0) {
+        stopTimer();
+        changeTimer();
+    } else {
+        if (!timerRunning) {
+            generateWord();
+            startTimer();
+        } else {
+            stopTimer();
         }
     }
 });

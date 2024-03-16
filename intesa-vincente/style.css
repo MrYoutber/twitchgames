@@ -147,12 +147,45 @@ body {
     padding: 10px 0 10px 0;
 }
 
+.minusPasso, .plusPasso {
+    border-radius: 10px;
+}
+
+.minusPasso:hover, .plusPasso:hover {
+    cursor: pointer;
+}
+
+.minusPasso {
+    width: 10%;
+    background: linear-gradient(0deg, rgb(48, 47, 57) 0%, rgb(94, 91, 113) 100%);
+    font-size: clamp(20px, 2vw, 25px);
+    padding: 10px 0 10px 0;
+}
+
+.plusPasso {
+    width: 10%;
+    background: linear-gradient(0deg, rgb(48, 47, 57) 0%, rgb(94, 91, 113) 100%);
+    font-size: clamp(20px, 2vw, 25px);
+    padding: 10px 0 10px 0;
+}
+
+.minusPasso, .plusPasso {
+    display: none;
+    background: linear-gradient(0deg, rgb(64, 0, 98) 0%, rgb(129, 0, 199) 100%);
+}
+
+@media screen and (max-width: 600px) {
+    .minusPasso, .plusPasso {
+        display: block;
+    }
+}
+
 .controls {
     margin-top: 50px;
 }
 
 .controls p{
-    font-size: 20px;
+    font-size: clamp(15px, 2vw, 20px);
     font-weight: 700;
     color: white;
     text-align: center;
