@@ -13,8 +13,11 @@ let wordText = document.getElementById('wordText');
 let wordDiv = document.getElementById('wordDiv');
 
 let minusPunti = document.getElementById('minusPunti');
-let passo = document.getElementById('passo');
 let plusPunti = document.getElementById('plusPunti');
+
+let minusPasso = document.getElementById('minusPasso');
+let passo = document.getElementById('passo');
+let plusPasso = document.getElementById('plusPasso');
 
 function startTimer() {
     timerRunning = true;
@@ -126,9 +129,18 @@ document.addEventListener('keyup', function(event) {
     }
 });
 
+minusPasso.addEventListener('click', function() {
+    if (parseInt(passo.textContent) > 0)
+            passo.textContent = parseInt(passo.textContent) - 1;
+});
+
 passo.addEventListener('click', function() {
     if (parseInt(passo.textContent) > 0)
         passo.textContent = parseInt(passo.textContent) - 1;
+});
+
+plusPasso.addEventListener('click', function() {
+    passo.textContent = parseInt(passo.textContent) + 1;
 });
 
 // GESTIONE PUNTI

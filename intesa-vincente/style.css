@@ -182,6 +182,7 @@ body {
 
 .controls {
     margin-top: 50px;
+    display: block;
 }
 
 .controls p{
@@ -189,6 +190,12 @@ body {
     font-weight: 700;
     color: white;
     text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+    .controls {
+        display: none;
+    }
 }
 
 .footer {
