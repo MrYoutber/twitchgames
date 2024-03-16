@@ -99,7 +99,7 @@ body {
     font-size: clamp(30px, 2vw, 35px);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1024px) {
     .word {
         width: 80%;
         height: fit-content;
@@ -174,7 +174,7 @@ body {
     background: linear-gradient(0deg, rgb(64, 0, 98) 0%, rgb(129, 0, 199) 100%);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1024px) {
     .minusPasso, .plusPasso {
         display: block;
     }
