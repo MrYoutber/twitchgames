@@ -68,7 +68,7 @@ function rollLetters(length) {
 }
 
 function generateWord() {
-    fetch('parole.txt')
+    fetch('parole2.txt')
         .then(response => response.text())
         .then(data => {
             let words = data.split('\n');
