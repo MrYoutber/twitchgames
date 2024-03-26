@@ -22,25 +22,32 @@ body {
     word-wrap: break-word;
 }
 
-.answerCard, .questionCard, .myCard, .playedCard {
+.answerCard, .questionCard, .myCard, .playedCard, .dupePlayedCard {
     width: 150px;
     min-height: 200px;
     max-height: fit-content;
     background: rgb(255, 255, 255);
     border-radius: 10px;
     padding: 10px;
-    margin: 20px;
     color: black;
     text-align: center;
     word-wrap: break-word;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
 }
 
-.myCard {
-  margin-left: 20px;
+.answerCard, .questionCard, .playedCard, .myCard {
+    margin: 20px;
 }
 
+/* .myCard {
+  margin-left: 20px;
+} */
+
 .myCard:hover {
+  cursor: pointer;
+}
+
+.dupePlayedCard:hover {
   cursor: pointer;
 }
 
@@ -63,19 +70,39 @@ body {
     display: none;
 }
 
-.playedCardsPlayerViewContainer {
+.playedPlayerViewContainer {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .cardPlaceholder {
-  width: 150px;
-  height: 200px;
+  width: 170px;
+  height: 220px;
   border: 5px dashed gray;
   border-radius: 10px;
-  padding: 10px;
-  margin: 15px;
+  margin: 20px;
+}
+
+.confirmChoice {
+  background: black;
+  color: white;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.confirmChoice:hover {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
 
 .footer {

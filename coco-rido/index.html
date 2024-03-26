@@ -16,10 +16,7 @@
             <h1 class="questionCardHeaderText">Coco Rido</h1>
           </div>
           <div class="question">
-            <p class="questionText">
-              Nel carcere di Los Angeles le voci dicono che puoi scambiare 200
-              sigarette per _________
-            </p>
+            <p class="questionText"></p>
           </div>
         </div>
 
@@ -34,26 +31,15 @@
           </div>
         </div>
       </div>
-      
-      <div class="playedCardsPlayerViewContainer">
 
+      <div class="playedPlayerViewContainer">
+        <!-- here some divs get appended -->
       </div>
+
+      <button class="confirmChoice hidden">Conferma</button>
 
       <h1>Le mie carte</h1>
     </div>
-
-    <div class="footer" id="footer">
-      <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
-      <script>
-        kofiWidgetOverlay.draw("federicoscutariu", {
-          type: "floating-chat",
-          "floating-chat.donateButton.text": "",
-          "floating-chat.donateButton.background-color": "#00b9fe",
-          "floating-chat.donateButton.text-color": "#fff",
-        });
-      </script>
-    </div>
-
     
     <div class="slideshow-container">
       <div class="mySlides fade">
@@ -194,20 +180,6 @@
         </div>
       </div>
       
-      <div class="mySlides fade">
-        <div class="container">
-          <div class="myCard">
-          <p class="slideCounter">12</p>
-            <div class="myCardHeader">
-              <h1 class="myCardHeaderText">Coco Rido</h1>
-            </div>
-            <div class="myCardTextDiv">
-                <p class="myCardText"></p>
-              </div>
-            </div>
-        </div>
-      </div>
-      
       <a class="prev" onclick="plusSlides(-1)">❮</a>
       <a class="next" onclick="plusSlides(1)">❯</a>
     </div>
@@ -242,5 +214,18 @@
       </script>
       
       <script src="main.js"></script>
+
+
+      <div class="footer" id="footer">
+        <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+        <script>
+          kofiWidgetOverlay.draw("federicoscutariu", {
+            type: "floating-chat",
+            "floating-chat.donateButton.text": "",
+            "floating-chat.donateButton.background-color": "#00b9fe",
+            "floating-chat.donateButton.text-color": "#fff",
+          });
+        </script>
+      </div>
   </body>
 </html>
