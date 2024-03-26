@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    background: rgb(37, 37, 37);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    margin: 0;
+    /* text-align: center; */
+}
+
+.main {
+    text-align: center;
+}
+
+.answerContainer, .questionContainer, .myCardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    word-wrap: break-word;
+}
+
+.answerCard, .questionCard, .myCard, .playedCard {
+    width: 150px;
+    min-height: 200px;
+    max-height: fit-content;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    color: black;
+    text-align: center;
+    word-wrap: break-word;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+}
+
+.myCard {
+  margin-left: 20px;
+}
+
+.myCard:hover {
+  cursor: pointer;
+}
+
+.questionCard {
+    background: rgb(0,0,0);
+    color: white;
+}
+
+.answerCardHeaderText, .questionCardHeaderText, .myCardHeaderText, .playedCardHeaderText {
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+}
+
+.playedCardHeader {
+    display: none;
+}
+
+.playedCardsPlayerViewContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardPlaceholder {
+  width: 150px;
+  height: 200px;
+  border: 5px dashed gray;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 15px;
+}
+
+.footer {
+    width: fit-content;
+    height: fit-content;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    padding: 20px;
+}
+
+
+
+
+
+
+/* MyCards Slideshow */
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: min-content;
+  position: relative;
+  margin: auto;
+  /* border: 2px solid blue; */
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.2s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.prev {
+  left: 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.slideCounter {
+  position: absolute;
+  top: -7px;
+  /* right: 60px; */
+  color: black;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
