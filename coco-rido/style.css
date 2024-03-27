@@ -84,6 +84,12 @@ body {
   margin: 20px;
 }
 
+.cardPlayed {
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+
 .confirmChoice {
   background: black;
   color: white;

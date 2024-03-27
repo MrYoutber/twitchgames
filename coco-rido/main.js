@@ -21,6 +21,11 @@ function generateDomandeCloud() {
 }
 
 function setRandomDomanda() {
+    let playedPlayerViewContainer = document.querySelectorAll('.playedPlayerViewContainer');
+    while (playedPlayerViewContainer.firstChild) {
+        playedPlayerViewContainer.removeChild(playedPlayerViewContainer.firstChild);
+    }
+
     let domandaCard = document.querySelector('.questionText');
     let randomIndex = Math.floor(Math.random() * domandeCloud.length);
     domandaCard.textContent = domandeCloud[randomIndex].domanda;
@@ -96,87 +101,141 @@ let generateDomandaBtn = document.getElementById('generateDomandaBtn');
 generateRisposteBtn.addEventListener('click', () => {
     setRandomRisposta();
     resetClasses();
-    handlePlayingCards();
+    // handlePlayingCards();
 });
 
 generateDomandaBtn.addEventListener('click', () => {
     setRandomDomanda();
     resetClasses();
-    handlePlayingCards();
+    // handlePlayingCards();
 });
 
 let confirmChoiceBtn = document.querySelector('.confirmChoice');
 
-function handlePlayingCards() {
-    let playerViewCards = document.querySelectorAll('.myCard');
-    let playedPlayerViewContainer = Array.from(document.querySelectorAll('.cardPlaceholder'));
-    console.log(playedPlayerViewContainer);
-
-    playerViewCards.forEach(card => {
-        card.addEventListener('click', () => {
-            let nonOccupiedPlaceholders = handleResettingChoice();
-
-            if (nonOccupiedPlaceholders.length != 0) {
-                nonOccupiedPlaceholders[0].classList.add('occupied');
-
-                let duplicatedCard = card.cloneNode(true);
-                duplicatedCard.classList.remove('myCard');
-                duplicatedCard.classList.add('dupePlayedCard');
-
-                nonOccupiedPlaceholders[0].appendChild(duplicatedCard);
-                card.classList.add('cardPlayed');
-                confirmChoiceBtn.classList.remove('hidden');
-
-                console.log("card played");
-                // console.log(playedPlayerViewContainer[i].className);
-                console.log(playedPlayerViewContainer);
-
-                handleResettingChoice();
-            }
-        });
-    });
-}
-
-setTimeout(() => {
-    handlePlayingCards();
-}, 1000);
-
-function handleResettingChoice() {
-    let playerPlayedCards = document.querySelectorAll('.dupePlayedCard');
-    let playedPlayerViewContainer = Array.from(document.querySelectorAll('.cardPlaceholder'));
+function getNonOccupiedPlaceholders(playedPlayerViewContainer) {
     let nonOccupiedPlaceholders = Array.from(playedPlayerViewContainer.filter(container => !container.classList.contains('occupied')));
-
-    playerPlayedCards.forEach(card => {
-        card.addEventListener('click', () => {
-            let parent = card.parentElement;
-            parent.classList.remove('occupied');
-            parent.removeChild(card);
-            console.log("card removed");
-
-            // Push the parent to the nonOccupiedPlaceholders array
-            nonOccupiedPlaceholders.push(parent);
-
-            // Sort the nonOccupiedPlaceholders array based on the number in the class name
-            nonOccupiedPlaceholders.sort((a, b) => {
-                let aNumber = parseInt(a.className.replace('cardPlaceholder', ''));
-                let bNumber = parseInt(b.className.replace('cardPlaceholder', ''));
-                return aNumber - bNumber;
-            });
-
-            console.log("non occupied placeholders: " + nonOccupiedPlaceholders);
-
-            if (playedPlayerViewContainer.every(container => !container.classList.contains('occupied'))) {
-                confirmChoiceBtn.classList.add('hidden');
-            }
-
-            handlePlayingCards();
-        });
+    console.log(nonOccupiedPlaceholders);
+    
+    nonOccupiedPlaceholders.sort((a, b) => {
+        let aNumber = parseInt(a.className.replace('cardPlaceholder', ''));
+        let bNumber = parseInt(b.className.replace('cardPlaceholder', ''));
+        return aNumber - bNumber;
     });
 
     return nonOccupiedPlaceholders;
 }
 
+let playerViewCards = document.querySelectorAll('.myCard');
+playerViewCards.forEach(card => {
+    card.removeEventListener('click', () => {
+        let playedPlayerViewContainer = Array.from(document.querySelectorAll('.cardPlaceholder'));
+        // console.log(playedPlayerViewContainer);
 
+        // console.log(nonOccupiedPlaceholders)
+        let nonOccupiedPlaceholders = getNonOccupiedPlaceholders(playedPlayerViewContainer);
+
+        // console.log("nonOccupiedPlaceholders: " + nonOccupiedPlaceholders.length);
+
+        if (nonOccupiedPlaceholders.length != 0) {
+            // console.log("nonOccupiedPlaceholders: " + nonOccupiedPlaceholders.length);
+            nonOccupiedPlaceholders[0].classList.add('occupied');
+
+            let duplicatedCard = card.cloneNode(true);
+            duplicatedCard.classList.remove('myCard');
+            duplicatedCard.classList.add('dupePlayedCard');
+
+            nonOccupiedPlaceholders[0].appendChild(duplicatedCard);
+            card.classList.add('cardPlayed');
+            confirmChoiceBtn.classList.remove('hidden');
+
+            nonOccupiedPlaceholders = getNonOccupiedPlaceholders(playedPlayerViewContainer);
+
+            // console.log("card played");
+            // console.log(playedPlayerViewContainer[i].className);
+            // console.log(playedPlayerViewContainer);
+            console.log("nonOccupiedPlaceholders: " + nonOccupiedPlaceholders.length)
+
+            handleResettingChoice();
+        } else {
+            console.log("no more placeholders");
+        }
+    });
+
+    card.addEventListener('click', () => {
+        if (!card.classList.contains('cardPlayed')) {
+            let playedPlayerViewContainer = Array.from(document.querySelectorAll('.cardPlaceholder'));
+            // console.log(playedPlayerViewContainer);
+    
+            // console.log(nonOccupiedPlaceholders)
+            let nonOccupiedPlaceholders = getNonOccupiedPlaceholders(playedPlayerViewContainer);
+    
+            // console.log("nonOccupiedPlaceholders: " + nonOccupiedPlaceholders.length);
+    
+            if (nonOccupiedPlaceholders.length != 0) {
+                // console.log("nonOccupiedPlaceholders: " + nonOccupiedPlaceholders.length);
+                nonOccupiedPlaceholders[0].classList.add('occupied');
+    
+                let duplicatedCard = card.cloneNode(true);
+                duplicatedCard.classList.remove('myCard');
+                duplicatedCard.classList.add('dupePlayedCard');
+    
+                nonOccupiedPlaceholders[0].appendChild(duplicatedCard);
+                card.classList.add('cardPlayed');
+                confirmChoiceBtn.classList.remove('hidden');
+    
+                nonOccupiedPlaceholders = getNonOccupiedPlaceholders(playedPlayerViewContainer);
+    
+                // console.log("card played");
+                // console.log(playedPlayerViewContainer[i].className);
+                // console.log(playedPlayerViewContainer);
+                console.log("nonOccupiedPlaceholders: " + nonOccupiedPlaceholders.length)
+    
+                handleResettingChoice();
+            } else {
+                console.log("no more placeholders");
+            }
+        }
+    });
+});
+
+function handleResettingChoice() {
+    let playerPlayedCards = document.querySelectorAll('.dupePlayedCard');
+    let playedPlayerViewContainer = Array.from(document.querySelectorAll('.cardPlaceholder'));
+
+    playerPlayedCards.forEach(card => {
+        card.addEventListener('click', () => {
+            let parent = card.parentElement;
+            parent.classList.remove('occupied');
+
+            // Get the text content of the clicked card
+            let cardText = card.textContent;
+
+            // Get all cards
+            let allCards = document.querySelectorAll('.myCard');
+
+            // Find the card with the same text content
+            let sameTextCard = Array.from(allCards).find(c => c.textContent === cardText);
+
+            sameTextCard.classList.remove('cardPlayed');
+
+            // Now sameTextCard is the card with the same text content as the clicked card
+            // You can add your code here to work with sameTextCard
+
+            parent.removeChild(card);
+
+            console.log("card removed");
+
+            if (playedPlayerViewContainer.every(container => !container.classList.contains('occupied'))) {
+                confirmChoiceBtn.classList.add('hidden');
+            }
+
+            let nonOccupiedPlaceholders = getNonOccupiedPlaceholders(playedPlayerViewContainer);
+            console.log("nonOccupiedPlaceholders: " + nonOccupiedPlaceholders.length);
+
+            // handlePlayingCards();
+        });
+    });
+}
 
 confirmChoiceBtn.addEventListener('click', () => {
     console.log("choice confirmed");
