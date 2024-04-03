@@ -1,6 +1,14 @@
 // Version 1.0
 let domandeCloud = [];
 
+let playerTurn = 0;
+let playerCards = {
+    0: [],
+    1: [],
+    2: [],
+    3: []
+};
+
 function generateDomandeCloud() {
     fetch('txt/domande.txt')
         .then(response => response.text())
@@ -67,6 +75,14 @@ function generateRisposteCloud() {
 }
 
 function setRandomRisposta() {
+    for (i = 0; i < 4; i++) {
+        for (j = 0; j < 11; j++) {
+            let randomIndex = Math.floor(Math.random() * risposteCloud.length);
+            playerCards[i].push(risposteCloud[randomIndex]);
+            risposteCloud.splice(randomIndex, 1);
+        }
+    }
+
     let cards = document.querySelectorAll('.myCardText');
     cards.forEach(card => {
         let randomIndex = Math.floor(Math.random() * risposteCloud.length);
@@ -219,13 +235,16 @@ function handleResettingChoice() {
             parent.classList.remove('occupied');
 
             // Get the text content of the clicked card
-            let cardText = card.textContent;
+            let cardText = card.querySelectorAll('.myCardText')[0].textContent;
 
             // Get all cards
             let allCards = document.querySelectorAll('.myCard');
 
             // Find the card with the same text content
-            let sameTextCard = Array.from(allCards).find(c => c.textContent === cardText);
+            let sameTextCard = Array.from(allCards).find(c => c.querySelectorAll('.myCardText')[0].textContent === cardText);
+            
+            // console.log('cardText: ' + cardText);
+            // console.log('sameTextCard: ' + sameTextCard.textContent);
 
             sameTextCard.classList.remove('cardPlayed');
 
@@ -248,7 +267,34 @@ function handleResettingChoice() {
     });
 }
 
+let cardPlaceholders = document.querySelectorAll('.cardPlaceholder');
+let allOccupied = false;
+
+let playedCardsForEachPlayer = {
+    0: [],
+    1: [],
+    2: [],
+    3: []
+};
+
 confirmChoiceBtn.addEventListener('click', () => {
-    console.log("choice confirmed");
+    for (let i=0; i<cardPlaceholders.length; i++) {
+        if (!cardPlaceholders[i].classList.contains('occupied')) {
+            allOccupied = false;
+            break;
+        } else {
+            allOccupied = true;
+        }
+    }
+
+    if (allOccupied) {
+        console.log("choice confirmed");
+
+
+    } else {
+        console.log("not all cards are played");
+    }
+
+    // console.log("choice confirmed");
     // implement logic to check if all cards are played
 });

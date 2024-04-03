@@ -120,6 +120,16 @@ body {
     padding: 20px;
 }
 
+.player1ScoreLabel, .player2ScoreLabel, .player3ScoreLabel, .player4ScoreLabel {
+  font-size: clamp(15px, 20px, 25px);
+  background-color: white;
+  color: black;
+  width: 150px;
+  padding: 5px;
+  margin-left: 10px;
+  text-align: center;
+}
+
 
 
 
