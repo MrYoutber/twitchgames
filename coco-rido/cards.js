@@ -1,7 +1,9 @@
 // Version 1.0
-let domandeCloud = [];
 
 let playerTurn = 0;
+let playersQuantity = 4;
+let cardsQuantity = 11;
+
 let playerCards = {
     0: [],
     1: [],
@@ -14,6 +16,8 @@ let playedCardsForEachPlayer = {
     2: [],
     3: []
 };
+
+let domandeCloud = [];
 
 function generateDomandeCloud() {
     fetch('txt/domande.txt')
@@ -74,32 +78,35 @@ function generateRisposteCloud() {
             lines.forEach(line => {
                 risposteCloud.push(line);
             });
+
+            generateRandomRisposte(playersQuantity, cardsQuantity);
         })
         .catch((error) => {
             console.error('Error:', error);
         });
 }
 
-function generateRandomRisposte() {
-    for (i = 0; i < 4; i++) {
-        for (j = 0; j < 11; j++) {
+function generateRandomRisposte(playersQuantity, cardsQuantity) {
+    for (let i = 0; i < playersQuantity; i++) {
+        for (let j = 0; j < cardsQuantity; j++) {
             let randomIndex = Math.floor(Math.random() * risposteCloud.length);
             playerCards[i].push(risposteCloud[randomIndex]);
             risposteCloud.splice(randomIndex, 1);
         }
+
+        setRandomRisposta(i);
     }
 }
 
 function setRandomRisposta(playerTurn) {
     let cardsArr = Array.from(document.querySelectorAll('.myCard'));
     for (let i = 0; i < cardsArr.length; i++) {
-        cardsArr[i].textContent = playerCards[playerTurn][i];
+        cardsArr[i].querySelector('.myCardText').textContent = playerCards[playerTurn][i];
     }
 }
 
 // Call generateRisposteCloud when the page loads
 generateRisposteCloud();
-setTimeout(generateRandomRisposte, 500);
 
 function resetClasses() {
     let cards = document.querySelectorAll('.myCard');
@@ -120,7 +127,7 @@ let generateRisposteBtn = document.getElementById('generateRisposteBtn');
 let generateDomandaBtn = document.getElementById('generateDomandaBtn');
 
 generateRisposteBtn.addEventListener('click', () => {
-    setRandomRisposta();
+    setRandomRisposta(0);
     resetClasses();
     // handlePlayingCards();
 });
@@ -292,7 +299,4 @@ confirmChoiceBtn.addEventListener('click', () => {
     } else {
         console.log("not all cards are played");
     }
-
-    // console.log("choice confirmed");
-    // implement logic to check if all cards are played
 });
