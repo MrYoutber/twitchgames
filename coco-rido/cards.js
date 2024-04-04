@@ -8,6 +8,12 @@ let playerCards = {
     2: [],
     3: []
 };
+let playedCardsForEachPlayer = {
+    0: [],
+    1: [],
+    2: [],
+    3: []
+};
 
 function generateDomandeCloud() {
     fetch('txt/domande.txt')
@@ -74,7 +80,7 @@ function generateRisposteCloud() {
         });
 }
 
-function setRandomRisposta() {
+function generateRandomRisposte() {
     for (i = 0; i < 4; i++) {
         for (j = 0; j < 11; j++) {
             let randomIndex = Math.floor(Math.random() * risposteCloud.length);
@@ -82,19 +88,18 @@ function setRandomRisposta() {
             risposteCloud.splice(randomIndex, 1);
         }
     }
+}
 
-    let cards = document.querySelectorAll('.myCardText');
-    cards.forEach(card => {
-        let randomIndex = Math.floor(Math.random() * risposteCloud.length);
-        card.textContent = risposteCloud[randomIndex];
-        risposteCloud.splice(randomIndex, 1);
-        console.log("risposta set");
-    });
+function setRandomRisposta(playerTurn) {
+    let cardsArr = Array.from(document.querySelectorAll('.myCard'));
+    for (let i = 0; i < cardsArr.length; i++) {
+        cardsArr[i].textContent = playerCards[playerTurn][i];
+    }
 }
 
 // Call generateRisposteCloud when the page loads
 generateRisposteCloud();
-setTimeout(setRandomRisposta, 500);
+setTimeout(generateRandomRisposte, 500);
 
 function resetClasses() {
     let cards = document.querySelectorAll('.myCard');
@@ -269,13 +274,6 @@ function handleResettingChoice() {
 
 let cardPlaceholders = document.querySelectorAll('.cardPlaceholder');
 let allOccupied = false;
-
-let playedCardsForEachPlayer = {
-    0: [],
-    1: [],
-    2: [],
-    3: []
-};
 
 confirmChoiceBtn.addEventListener('click', () => {
     for (let i=0; i<cardPlaceholders.length; i++) {
