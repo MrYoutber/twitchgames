@@ -1,6 +1,7 @@
 // Version 1.0
 
 let playerTurn = 0;
+let questionMaster = 0;
 let playersQuantity = 4;
 let cardsQuantity = 11;
 
@@ -79,23 +80,35 @@ function generateRisposteCloud() {
                 risposteCloud.push(line);
             });
 
-            generateRandomRisposte(playersQuantity, cardsQuantity);
+            generateRandomRisposte(playerTurn, cardsQuantity);
         })
         .catch((error) => {
             console.error('Error:', error);
         });
 }
 
-function generateRandomRisposte(playersQuantity, cardsQuantity) {
-    for (let i = 0; i < playersQuantity; i++) {
-        for (let j = 0; j < cardsQuantity; j++) {
-            let randomIndex = Math.floor(Math.random() * risposteCloud.length);
-            playerCards[i].push(risposteCloud[randomIndex]);
-            risposteCloud.splice(randomIndex, 1);
-        }
+//function generateRandomRisposte(playersQuantity, cardsQuantity) {
+//    for (let i = 0; i < playersQuantity; i++) {
+//        for (let j = 0; j < cardsQuantity; j++) {
+//            let randomIndex = Math.floor(Math.random() * risposteCloud.length);
+//            playerCards[i].push(risposteCloud[randomIndex]);
+//            risposteCloud.splice(randomIndex, 1);
+//        }
+//
+//        setRandomRisposta(i);
+//        console.log(playerCards[i]);
+//    }
+//}
 
-        setRandomRisposta(i);
+function generateRandomRisposte(playerTurn, cardsQuantity) {
+    for (let j = 0; j < cardsQuantity; j++) {
+        let randomIndex = Math.floor(Math.random() * risposteCloud.length);
+        playerCards[playerTurn].push(risposteCloud[randomIndex]);
+        risposteCloud.splice(randomIndex, 1);
     }
+
+    setRandomRisposta(playerTurn);
+    console.log(playerCards[playerTurn]);
 }
 
 function setRandomRisposta(playerTurn) {
@@ -267,11 +280,11 @@ function handleResettingChoice() {
 
             console.log("card removed");
 
-            if (playedPlayerViewContainer.every(container => !container.classList.contains('occupied'))) {
+            let nonOccupiedPlaceholders = getNonOccupiedPlaceholders(playedPlayerViewContainer);
+            if (nonOccupiedPlaceholders.length != 0) {
                 confirmChoiceBtn.classList.add('hidden');
             }
 
-            let nonOccupiedPlaceholders = getNonOccupiedPlaceholders(playedPlayerViewContainer);
             console.log("nonOccupiedPlaceholders: " + nonOccupiedPlaceholders.length);
 
             // handlePlayingCards();
@@ -279,24 +292,26 @@ function handleResettingChoice() {
     });
 }
 
-let cardPlaceholders = document.querySelectorAll('.cardPlaceholder');
-let allOccupied = false;
-
 confirmChoiceBtn.addEventListener('click', () => {
-    for (let i=0; i<cardPlaceholders.length; i++) {
-        if (!cardPlaceholders[i].classList.contains('occupied')) {
-            allOccupied = false;
-            break;
-        } else {
-            allOccupied = true;
-        }
-    }
+    let playedCards = Array.from(document.querySelectorAll('.dupePlayedCard'));
 
-    if (allOccupied) {
-        console.log("choice confirmed");
+    playedCards.forEach(card => {
+        let cardText = card.querySelector('.myCardText').textContent;
+        playedCardsForEachPlayer[playerTurn].push(cardText);
+    });
 
+    console.log(playedCardsForEachPlayer);
 
+    playerTurn++;
+    if (playerTurn < playersQuantity) {
+        generateRandomRisposte(playerTurn, cardsQuantity);
+        document.querySelector('.turnText').textContent = 'Giocatore ' + (playerTurn + 1);
     } else {
-        console.log("not all cards are played");
+        console.log("end of round, wait for question master to choose the winner");
+        alert("da fare");
     }
+
+    setRandomRisposta(playerTurn);
+    resetClasses();
+    confirmChoiceBtn.classList.add('hidden');
 });

@@ -15,70 +15,38 @@ body {
     overflow: hidden;
 }
 
-.title {
-    margin-top: -200px;
-}
-
-.title h1 {
-    font-size: clamp(3.125rem, -0.7813rem + 12.5vw, 6.25rem);
-}
-
-.title h1 .firstSpan {
-    background: black;
-    color: white;
-    padding: 10px;
-}
-
-.title h1 .secondSpan {
-    background: white;
-    color: black;
-    padding: 10px;
-}
-
-.title h2 {
-    font-size: 30px;
-    margin-top: -30px;
-}
-
-@media screen and (max-width: 784px) {
+@media screen and (max-width: 600px) {
     body {
+        display: block;
         overflow: scroll;
     }
 
-    .title h2 {
-        margin-top: 0px;
+    .expandingWhite {
+        position: absolute;
+        top: -100%;
+        left: -100%;
     }
 }
 
-.btnContainer {
-    margin-top: 30px;
-    padding: 4px;
-    border-radius: 15px;
-    border: 3px solid white;
-    transition: all .2s linear;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container h1 {
+    font-size: clamp(2.1875rem, 1.0156rem + 3.75vw, 3.125rem);
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.container p {
+    font-size: clamp(1.25rem, 0.4688rem + 2.5vw, 1.875rem);
+}
+
+.container input {
+    width: 300px;
+    height: 30px;
     text-align: center;
-}
-
-.btnContainer:hover {
-    transition: all .2s linear;
-    padding: 7px;
-}
-
-.playNow {
-    background-color: white;
+    font-size: 20px;
     font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    color: black;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: 30px;
-    cursor: pointer;
-    z-index: 1000;
+    outline: none;
 }
+
 
 .expandingWhite {
     position: absolute;
@@ -86,6 +54,11 @@ body {
     border-radius: 50%;
     width: 0px;
     height: 0px;
+}
+
+.expandingWhite.unexpand {
+    animation: expand 1s linear reverse;
+    z-index: 1001;
 }
 
 .expandingWhite.expand {

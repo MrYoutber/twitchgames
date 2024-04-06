@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coco Rido - By Drake</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="wheel.css">
+</head>
+<body>
+    <span class="expandingWhite expanded"></span>
+
+    <div class="container">
+        <h1>Prima di tutto scegliete i nomi</h1>
+        <p>Giocatore 1</p>
+        <input type="text" class="name" id="name1" name="name1" placeholder="Nome">
+        <p>Giocatore 2</p>
+        <input type="text" class="name" id="name2" name="name2" placeholder="Nome">
+        <p>Giocatore 3</p>
+        <input type="text" class="name" id="name3" name="name3" placeholder="Nome">
+        <p>Giocatore 4</p>
+        <input type="text" class="name" id="name4" name="name4" placeholder="Nome">
+    </div>
+
+
+    <div class="spinContainer">
+        <div class="spinBtn">GIRA</div>
+        <div class="wheelContainer">
+            <div class="wheel">
+                <div class="number" style="--i:1; --clr:red"><span id="wheelName1"></span></div>
+                <div class="number" style="--i:2; --clr:#4169e1"><span id="wheelName2"></span></div>
+                <div class="number" style="--i:3; --clr:#3cb371"><span id="wheelName3"></span></div>
+                <div class="number" style="--i:4; --clr:#daa520"><span id="wheelName4"></span></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="footer" id="footer">
+        <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+        <script>
+          kofiWidgetOverlay.draw("federicoscutariu", {
+            type: "floating-chat",
+            "floating-chat.donateButton.text": "",
+            "floating-chat.donateButton.background-color": "#00b9fe",
+            "floating-chat.donateButton.text-color": "#fff",
+          });
+        </script>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

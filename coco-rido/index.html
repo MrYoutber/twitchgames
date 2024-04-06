@@ -1,240 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coco Rido - By Drake</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <button id="generateDomandaBtn">Genera Domanda</button>
-    <button id="generateRisposteBtn">Genera Risposte</button>
-    <div class="scoreContainer">
-      <h2 class="player1ScoreLabel">Giocatore 1: <span class="player1Score">0</span></h2>
-      <h2 class="player2ScoreLabel">Giocatore 2: <span class="player2Score">0</span></h2>
-      <h2 class="player3ScoreLabel">Giocatore 3: <span class="player3Score">0</span></h2>
-      <h2 class="player4ScoreLabel">Giocatore 4: <span class="player4Score">0</span></h2>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="title">
+        <h1><span class="firstSpan">Coco</span><span class="secondSpan">Rido</span></h1>
+        <h2>By Drake</h2>
     </div>
-    <div class="main">
-      <div class="questionContainer">
-        <div class="questionCard">
-          <div class="questionCardHeader">
-            <h1 class="questionCardHeaderText">Coco Rido</h1>
-          </div>
-          <div class="question">
-            <p class="questionText"></p>
-          </div>
-        </div>
-
-        <div class="playedCardsMultiplayerContainer">
-          <div class="playedCard">
-            <div class="playedCardBack">
-              <img src="logo.jpg" class="logo" />
-            </div>
-            <!-- <div class="playedCardHeader">
-                        <h1 class="playedCardHeaderText">Coco Rido</h1>
-                    </div> -->
-          </div>
-        </div>
-      </div>
-
-      <div class="playedPlayerViewContainer">
-        <!-- here some divs get appended -->
-      </div>
-
-      <button class="confirmChoice hidden">Conferma</button>
-
-      <h1>Le mie carte</h1>
+    <div class="btnContainer">
+        <span class="expandingWhite"></span>
+        <button class="playNow">Gioca Ora</button>
     </div>
-    
-    <div class="slideshow-container">
-      <div class="mySlides fade">
-        <div class="myCard">
-          <p class="slideCounter">1</p>
-            <div class="myCardHeader">
-              <h1 class="myCardHeaderText">Coco Rido</h1>
-            </div>
-            <div class="myCardTextDiv">
-              <p class="myCardText"></p>
-            </div>
-        </div>
-      </div>
-      
-      <div class="mySlides fade">
-        <div class="myCard">
-          <p class="slideCounter">2</p>
-          <div class="myCardHeader">
-            <h1 class="myCardHeaderText">Coco Rido</h1>
-          </div>
-          <div class="myCardTextDiv">
-            <p class="myCardText"></p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="mySlides fade">
-        <div class="container">
-          <div class="myCard">
-          <p class="slideCounter">3</p>
-            <div class="myCardHeader">
-              <h1 class="myCardHeaderText">Coco Rido</h1>
-            </div>
-            <div class="myCardTextDiv">
-                <p class="myCardText"></p>
-              </div>
-            </div>
-        </div>
-      </div>
 
-      <div class="mySlides fade">
-        <div class="myCard">
-          <p class="slideCounter">4</p>
-            <div class="myCardHeader">
-              <h1 class="myCardHeaderText">Coco Rido</h1>
-            </div>
-            <div class="myCardTextDiv">
-              <p class="myCardText"></p>
-            </div>
-        </div>
-      </div>
-      
-      <div class="mySlides fade">
-        <div class="myCard">
-          <p class="slideCounter">5</p>
-          <div class="myCardHeader">
-            <h1 class="myCardHeaderText">Coco Rido</h1>
-          </div>
-          <div class="myCardTextDiv">
-            <p class="myCardText"></p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="mySlides fade">
-        <div class="container">
-          <div class="myCard">
-          <p class="slideCounter">6</p>
-            <div class="myCardHeader">
-              <h1 class="myCardHeaderText">Coco Rido</h1>
-            </div>
-            <div class="myCardTextDiv">
-                <p class="myCardText"></p>
-              </div>
-            </div>
-        </div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="myCard">
-          <p class="slideCounter">7</p>
-            <div class="myCardHeader">
-              <h1 class="myCardHeaderText">Coco Rido</h1>
-            </div>
-            <div class="myCardTextDiv">
-              <p class="myCardText"></p>
-            </div>
-        </div>
-      </div>
-      
-      <div class="mySlides fade">
-        <div class="myCard">
-          <p class="slideCounter">8</p>
-          <div class="myCardHeader">
-            <h1 class="myCardHeaderText">Coco Rido</h1>
-          </div>
-          <div class="myCardTextDiv">
-            <p class="myCardText"></p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="mySlides fade">
-        <div class="container">
-          <div class="myCard">
-          <p class="slideCounter">9</p>
-            <div class="myCardHeader">
-              <h1 class="myCardHeaderText">Coco Rido</h1>
-            </div>
-            <div class="myCardTextDiv">
-                <p class="myCardText"></p>
-              </div>
-            </div>
-        </div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="myCard">
-          <p class="slideCounter">10</p>
-            <div class="myCardHeader">
-              <h1 class="myCardHeaderText">Coco Rido</h1>
-            </div>
-            <div class="myCardTextDiv">
-              <p class="myCardText"></p>
-            </div>
-        </div>
-      </div>
-      
-      <div class="mySlides fade">
-        <div class="myCard">
-          <p class="slideCounter">11</p>
-          <div class="myCardHeader">
-            <h1 class="myCardHeaderText">Coco Rido</h1>
-          </div>
-          <div class="myCardTextDiv">
-            <p class="myCardText"></p>
-          </div>
-        </div>
-      </div>
-      
-      <a class="prev" onclick="plusSlides(-1)">❮</a>
-      <a class="next" onclick="plusSlides(1)">❯</a>
-    </div>
-    <br />
-    
-    <script>
-      let slideIndex = 1;
-      showSlides(slideIndex);
-      
-      function plusSlides(n) {
-        showSlides((slideIndex += n));
-      }
-      
-      function currentSlide(n) {
-        showSlides((slideIndex = n));
-      }
-
-      function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        if (n > slides.length) {
-          slideIndex = 1;
-        }
-        if (n < 1) {
-          slideIndex = slides.length;
-        }
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-        }
-        slides[slideIndex - 1].style.display = "block";
-      }
-      </script>
-      
-      <script src="cards.js"></script>
-
-      <div class="scoreContainerMobile">
-        <div class="row">
-          <h2 class="player1ScoreLabel">Giocatore 1: <span class="player1Score">0</span></h2>
-          <h2 class="player2ScoreLabel">Giocatore 2: <span class="player2Score">0</span></h2>
-        </div>
-
-        <div class="row">
-          <h2 class="player3ScoreLabel">Giocatore 3: <span class="player3Score">0</span></h2>
-          <h2 class="player4ScoreLabel">Giocatore 4: <span class="player4Score">0</span></h2>
-        </div>
-      </div>
-
-
-      <div class="footer" id="footer">
+    <div class="footer" id="footer">
         <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
         <script>
           kofiWidgetOverlay.draw("federicoscutariu", {
@@ -244,6 +26,8 @@
             "floating-chat.donateButton.text-color": "#fff",
           });
         </script>
-      </div>
-  </body>
+    </div>
+
+    <script src="main.js"></script>
+</body>
 </html>

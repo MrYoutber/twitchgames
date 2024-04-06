@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    background: rgb(37, 37, 37);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    margin: 0;
+    /* text-align: center; */
+}
+
+.main {
+    text-align: center;
+}
+
+.answerContainer, .questionContainer, .myCardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    word-wrap: break-word;
+}
+
+.answerCard, .questionCard, .myCard, .playedCard, .dupePlayedCard {
+    width: 150px;
+    min-height: 200px;
+    max-height: fit-content;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 10px;
+    color: black;
+    text-align: center;
+    word-wrap: break-word;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+}
+
+.answerCard, .questionCard, .playedCard, .myCard {
+    margin: 20px;
+}
+
+/* .myCard {
+  margin-left: 20px;
+} */
+
+.myCard:hover {
+  cursor: pointer;
+}
+
+.dupePlayedCard:hover {
+  cursor: pointer;
+}
+
+.questionCard {
+    background: rgb(0,0,0);
+    color: white;
+}
+
+.answerCardHeaderText, .questionCardHeaderText, .myCardHeaderText, .playedCardHeaderText {
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+}
+
+.playedCardHeader {
+    display: none;
+}
+
+.playedPlayerViewContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardPlaceholder {
+  width: 170px;
+  height: 220px;
+  border: 5px dashed gray;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.cardPlayed {
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+
+.confirmChoice {
+  background: black;
+  color: white;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.confirmChoice:hover {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.footer {
+    width: fit-content;
+    height: fit-content;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    padding: 20px;
+}
+
+.scoreContainer {
+  max-width: fit-content;
+  position: absolute;
+}
+
+.scoreContainerMobile {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .scoreContainer {
+    display: none;
+  }
+
+  .scoreContainerMobile {
+    /* max-width: fit-content; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 80px;
+  }
+
+  .scoreContainerMobile .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: -10px;
+  }
+}
+
+.player1ScoreLabel, .player2ScoreLabel, .player3ScoreLabel, .player4ScoreLabel {
+  font-size: clamp(15px, 20px, 25px);
+  background-color: white;
+  color: black;
+  width: 150px;
+  padding: 5px;
+  margin-left: 10px;
+  text-align: center;
+}
+
+.turnContainer {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.turnText {
+  background: white;
+  color: black;
+  width: max-content;
+  height: max-content;
+  padding: 10px;
+  font-size: clamp(1.75rem, 1.4375rem + 1vw, 2rem);
+}
+
+
+
+
+
+
+/* MyCards Slideshow */
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: min-content;
+  position: relative;
+  margin: auto;
+  /* border: 2px solid blue; */
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.2s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.prev {
+  left: 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.slideCounter {
+  position: absolute;
+  top: -7px;
+  /* right: 60px; */
+  color: black;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+
+
+
+
+
+.expandingWhite {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 50%;
+  width: 0px;
+  height: 0px;
+  z-index: 1001;
+}
+
+.expandingWhite.unexpand {
+  animation: expand 1s linear reverse;
+  z-index: 1001;
+}
+
+.expandingWhite.expand {
+  animation: expand 1s linear;
+  z-index: 1001;
+}
+
+.expandingWhite.expanded {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  width: 3000px;
+  height: 3000px;
+}
+
+@keyframes expand {
+  0% {
+      width: 0px;
+      height: 0px;
+      opacity: 1;
+  }
+
+  100% {
+      width: 3000px;
+      height: 3000px;
+      opacity: 1;
+  }
+}
